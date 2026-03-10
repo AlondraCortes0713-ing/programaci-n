@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio Felino - Adopción y cuidado de gatos</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+        header {
+            background-color: #ff9a3c;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 0.5rem;
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cat-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem;
+            width: 250px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        
+        .cat-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .filter-section {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .video-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .video-item {
+            width: 30%;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .video-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Refugio Felino</h1>
+        <p>Encuentra a tu compañero felino ideal</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#videos">Videos</a></li>
+            <li><a href="#info">Pata Ausente</a></li>
+        </ul>
+    </nav>
+    
+    <section id="inicio">
+        <h2>Bienvenidos a Refugio Felino</h2>
+        <img src="kira.jpeg" alt="Gato destacado en adopción" style="width:20%; max-height:400px; object-fit:cover; border-radius:5px;">
+        
+        <div style="margin-top:2rem;">
+            <h3>Nuestra Misión</h3>
+            <p>Promover la adopción responsable de gatos y brindar orientación sobre su cuidado para mejorar su calidad de vida y reducir el abandono animal.</p>
+            
+            <h3>Nuestra Visión</h3>
+            <p>Ser el refugio líder en adopción felina, creando una comunidad consciente y comprometida con el bienestar animal.</p>
+        </div>
+    </section>
+    
+    <section id="catalogo">
+        <h2>Gatos en adopción</h2>
+        
+        <div class="filter-section">
+            <h3>Filtrar por:</h3>
+            <select id="tipo">
+                <option value="todos">Todos los tipos</option>
+                <option value="domestico">Doméstico</option>
+                <option value="rescatado">Rescatado</option>
+                <option value="especial">Necesidades especiales</option>
+            </select>
+            
+            <select id="edad">
+                <option value="todos">Todas las edades</option>
+                <option value="cachorro">Cachorro (0-1 año)</option>
+                <option value="joven">Joven (1-3 años)</option>
+                <option value="adulto">Adulto (3-10 años)</option>
+                <option value="senior">Senior (10+ años)</option>
+            </select>
+            
+            <select id="tamaño">
+                <option value="todos">Todos los tamaños</option>
+                <option value="pequeño">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
+            </select>
+            
+            <button onclick="filtrarGatos()">Aplicar filtros</button>
+        </div>
+        
+        <div id="cat-container">
+            <!-- Ejemplo de tarjetas de gatos -->
+            <div class="cat-card">
+                <img src="Luna.jpeg" alt="Luna">
+                <h3>Luna</h3>
+                <p><strong>Edad:</strong> 2 años</p>
+                <p><strong>Raza:</strong> Siamés</p>
+                <p>Luna es una gata juguetona y cariñosa que adora estar en compañía de personas.</p>
+                <button onclick="mostrarInfo('Luna')">Más información</button>
+            </div>
+            
+            <div class="cat-card">
+                <img src="Simba.jpeg" alt="Simba">
+                <h3>Simba</h3>
+                <p><strong>Edad:</strong> 5 años</p>
+                <p><strong>Raza:</strong> Maine Coon</p>
+                <p>Simba es un gato tranquilo y majestuoso que disfruta de largas siestas al sol.</p>
+                <button onclick="mostrarInfo('Simba')">Más información</button>
+            </div>
+            
+            <div class="cat-card">
+                <img src="Milo.jpeg" alt="Milo">
+                <h3>Milo</h3>
+                <p><strong>Edad:</strong> 1 año</p>
+                <p><strong>Raza:</strong> Mestizo</p>
+                <p>Milo es un gatito energético y curioso que está buscando un hogar activo.</p>
+                <button onclick="mostrarInfo('Milo')">Más información</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contacto">
+        <h2>Formulario de contacto</h2>
+        
+        <form id="contact-form" style="max-width:600px; margin:0 auto;">
+            <div style="margin-bottom:1rem;">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required style="width:100%; padding:0.5rem;">
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required style="width:100%; padding:0.5rem;">
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" style="width:100%; padding:0.5rem;">
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+                <label for="gato">Gato de interés (opcional):</label>
+                <select id="gato" name="gato" style="width:100%; padding:0.5rem;">
+                    <option value="">Seleccione un gato</option>
+                    <option value="Luna">Luna</option>
+                    <option value="Simba">Simba</option>
+                    <option value="Milo">Milo</option>
+                </select>
+            </div>
+            
+            <div style="margin-bottom:1rem;">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" required style="width:100%; padding:0.5rem; min-height:100px;"></textarea>
+            </div>
+            
+            <button type="submit" style="background-color:#ff9a3c; color:white; border:none; padding:0.75rem 1.5rem; border-radius:5px; cursor:pointer;">Enviar mensaje</button>
+        </form>
+        
+        <div style="margin-top:3rem; background-color:#f4f4f4; padding:1.5rem; border-radius:5px;">
+            <h3>Datos de contacto del refugio</h3>
+            <p><strong>Dirección:</strong> Calle Felina 123, Ciudad Gatuna</p>
+            <p><strong>Teléfono:</strong> +1 234 567 890</p>
+            <p><strong>Correo electrónico:</strong> info@refugiofelino.org</p>
+            <p><strong>Horario de atención:</strong> Lunes a Viernes de 10:00 a 18:00</p>
+        </div>
+    </section>
+    
+    <section id="videos">
+        <h2>Videos de cuidado de gatos</h2>
+        
+        <div class="video-gallery">
+            <div class="video-item">
+                <h3>Alimentación adecuada para gatos</h3>
+                <p>Aprende cómo alimentar a tu gato según su edad y necesidades especiales.</p>
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-item">
+                <h3>Cuidados básicos de salud</h3>
+                <p>Conoce las señales de alerta y cuidados preventivos para mantener sano a tu gato.</p>
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="video-item">
+                <h3>Entrenamiento y comportamiento</h3>
+                <p>Técnicas para entender y educar a tu gato de manera positiva.</p>
+                <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <section id="info">
+        <h2>Pata Ausente - Zona informativa</h2>
+        
+        <div style="display:flex; flex-wrap:wrap; gap:2rem;">
+            <div style="flex:1; min-width:300px;">
+                <h3>Historias de adopciones exitosas</h3>
+                <p>Conoce las conmovedoras historias de gatos que encontraron un hogar amoroso.</p>
+                <button onclick="mostrarHistorias()">Leer historias</button>
+            </div>
+            
+            <div style="flex:1; min-width:300px;">
+                <h3>Primer día con tu gato</h3>
+                <p>Guía completa para preparar tu hogar y recibir a tu nuevo compañero felino.</p>
+                <button onclick="mostrarGuia()">Ver guía</button>
+            </div>
+            
+            <div style="flex:1; min-width:300px;">
+                <h3>Documentación legal para adopción</h3>
+                <p>Requisitos y trámites necesarios para una adopción responsable y legal.</p>
+                <button onclick="mostrarDocumentacion()">Ver requisitos</button>
+            </div>
+            
+            <div style="flex:1; min-width:300px;">
+                <h3>Donaciones y voluntariado</h3>
+                <p>Cómo puedes ayudar a nuestro refugio y a los gatos que esperan un hogar.</p>
+                <button onclick="mostrarDonaciones()">Cómo ayudar</button>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>© 2023 Refugio Felino - Todos los derechos reservados</p>
+        <p>Síguenos en redes sociales: [iconos]</p>
+    </footer>
+    
+    <script>
+        // Funciones básicas de JavaScript
+        function filtrarGatos() {
+            // Lógica para filtrar gatos según los selectores
+            alert('Funcionalidad de filtrado en desarrollo. Se mostrarían los gatos que coincidan con los filtros seleccionados.');
+        }
+        
+        function mostrarInfo(nombreGato) {
+            alert('Más información sobre ' + nombreGato + '. En una versión completa, esto abriría un modal o página detallada.');
+        }
+        
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+        
+        function mostrarHistorias() {
+            alert('Mostrando historias de adopciones exitosas.');
+        }
+        
+        function mostrarGuia() {
+            alert('Mostrando guía para el primer día con tu gato.');
+        }
+        
+        function mostrarDocumentacion() {
+            alert('Mostrando documentación legal para adopción.');
+        }
+        
+        function mostrarDonaciones() {
+            alert('Mostrando información sobre donaciones y voluntariado.');
+        }
+    </script>
+</body>
+</html>
